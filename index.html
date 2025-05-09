@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Erinnerungen an Bartosz</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/blasten/turn.js@master/lib/turn.min.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #ccc;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #flipbook {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* All pages */
+    .page {
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Default full spread size */
+    #flipbook {
+      width: 3508px;
+      height: 1241px;
+    }
+
+    /* First and last page: single width */
+    .page.odd:first-child,
+    .page.even:last-child {
+      width: 1754px !important;
+    }
+
+  /* NAVIGATION ZONES */
+    .nav-zone {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 15%;
+      z-index: 10;
+    }
+
+    .nav-zone.left {
+      left: 0;
+    }
+
+    .nav-zone.right {
+      right: 0;
+    }
+
+    .arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 3rem;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 0.3em 0.6em;
+      border-radius: 10px;
+      cursor: pointer;
+      user-select: none;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 20;
+    }
+
+    /* Show arrows when hovering the nav-zone */
+    .nav-zone:hover .arrow {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #left-arrow {
+      left: 1em;
+    }
+
+    #right-arrow {
+      right: 1em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Flipbook Container -->
+
+<div id="flipbook">
+
+  <!-- Title page -->
+  <div class="page" style="background-image: url('pages/page_01.jpg');"></div>
+
+  <!-- Pages 2–39: normal spreads -->
+  <div class="page" style="background-image: url('pages/page_02.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_03.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_04.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_05.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_06.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_07.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_08.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_09.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_10.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_11.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_12.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_13.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_14.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_15.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_16.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_17.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_18.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_19.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_20.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_21.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_22.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_23.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_24.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_25.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_26.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_27.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_28.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_29.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_30.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_31.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_32.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_33.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_34.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_35.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_36.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_37.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_38.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_39.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_40.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_41.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_42.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_43.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_44.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_45.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_46.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_47.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_48.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_49.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_50.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_51.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_52.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_53.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_54.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_55.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_56.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_57.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_58.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_59.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_60.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_61.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_62.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_63.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_64.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_65.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_66.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_67.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_68.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_69.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_70.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_71.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_72.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_73.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_74.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_75.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_76.jpg');"></div>
+  <div class="page" style="background-image: url('pages/page_77.jpg');"></div>
+
+ <!-- End Page -->
+  <div class="page" style="background-image: url('pages/page_78.jpg');"></div>
+</div>
+
+<!-- Navigation zones and arrows -->
+<div class="nav-zone left">
+  <div id="left-arrow" class="arrow" onclick="$('#flipbook').turn('previous')">&#8592;</div>
+</div>
+<div class="nav-zone right">
+  <div id="right-arrow" class="arrow" onclick="$('#flipbook').turn('next')">&#8594;</div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('#flipbook').turn({
+      width: 3508,
+      height: 1241,
+      autoCenter: true,
+      display: 'double',
+      elevation: 50
+    });
+
+    // Keyboard support
+    $(document).keydown(function(e) {
+      if (e.key === "ArrowLeft") {
+        $('#flipbook').turn('previous');
+      } else if (e.key === "ArrowRight") {
+        $('#flipbook').turn('next');
+      }
+    });
+
+    // Responsive scaling
+    function resizeFlipbook() {
+      const windowWidth = $(window).width();
+      const windowHeight = $(window).height();
+      const bookWidth = 3508;
+      const bookHeight = 1241;
+      const scale = Math.min(windowWidth / bookWidth, windowHeight / bookHeight);
+      $('#flipbook').css({
+        transform: `translate(-50%, -50%) scale(${scale})`,
+        transformOrigin: 'center'
+      });
+    }
+
+    $(window).on('resize', resizeFlipbook);
+    resizeFlipbook();
+  });
+</script>
+
+</body>
+</html>
